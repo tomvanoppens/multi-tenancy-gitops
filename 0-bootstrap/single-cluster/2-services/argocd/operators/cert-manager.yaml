@@ -17,6 +17,17 @@ spec:
   project: services
   source:
     path: operators/cert-manager
+    helm:
+      values: |
+        ibm-certmngr-operator:
+          subscriptions:
+            ibmcert:
+              name: ibm-ace
+              subscription:
+                channel: v3.0
+                installPlanApproval: Automatic
+                name: ibm-cert-manager-operator
+                source: ibm-operator-catalog
   syncPolicy:
     automated:
       prune: true
