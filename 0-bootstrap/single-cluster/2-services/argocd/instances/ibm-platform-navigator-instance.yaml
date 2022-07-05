@@ -32,4 +32,4 @@ spec:
               version: "2021.4.1"
               replicas: 2
               storage:
-                class: ibmc-file-gold-gid
+                class: ibmc-file-gold
