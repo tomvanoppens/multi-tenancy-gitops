@@ -27,52 +27,67 @@ spec:
           ibmeventstreamsinstance:
             name: es-inst
             spec:
-              security:
-                internalTls: 'TLSv1.2'
-              version: 10.5.0
               license:
-                # By installing this product you accept the license terms at https://ibm.biz/es-license
-                accept: true
+                accept: false
                 use: CloudPakForIntegrationProduction
-              adminApi: {}
-              adminUI: {}
-              apicurioRegistry: {}
-              collector: {}
-              restProducer: {}
+              requestIbmServices:
+                iam: true
+                monitoring: true
               strimziOverrides:
                 kafka:
-                  replicas: 3
-                  authorization:
-                    type: runas
                   config:
-                    inter.broker.protocol.version: "2.8"
-                    interceptor.class.names: com.ibm.eventstreams.interceptors.metrics.ProducerMetricsInterceptor
+                    inter.broker.protocol.version: '3.2'
                     log.cleaner.threads: 6
-                    log.message.format.version: "2.8"
+                    log.message.format.version: '3.2'
                     num.io.threads: 24
                     num.network.threads: 9
                     num.replica.fetchers: 3
                     offsets.topic.replication.factor: 3
-                  listeners:
-                    external:
-                      type: route
-                      authentication:
-                        type: scram-sha-512
-                    tls:
-                      authentication:
-                        type: tls
-                  metrics: {}
+                    default.replication.factor: 3
+                    min.insync.replicas: 2
+                  metricsConfig:
+                    valueFrom:
+                      configMapKeyRef:
+                        key: kafka-metrics-config.yaml
+                        name: metrics-config
+                    type: jmxPrometheusExporter
+                  authorization:
+                    type: custom
+                    supportsAdminApi: true
+                    authorizerClass: com.ibm.eventstreams.runas.authorizer.RunAsAuthorizer
                   storage:
                     type: persistent-claim
                     size: 4Gi
-                    class:  ibmc-file-gold-gid
-                zookeeper:
+                    class: ibmc-file-gold-gid
+                  listeners:
+                    - authentication:
+                        type: scram-sha-512
+                      name: external
+                      port: 9094
+                      type: route
+                      tls: true
+                    - authentication:
+                        type: tls
+                      name: tls
+                      port: 9093
+                      type: internal
+                      tls: true
                   replicas: 3
-                  metrics: {}
+                zookeeper:
+                  metricsConfig:
+                    valueFrom:
+                      configMapKeyRef:
+                        key: zookeeper-metrics-config.yaml
+                        name: metrics-config
+                    type: jmxPrometheusExporter
                   storage:
                     type: persistent-claim
                     size: 2Gi
-                    class:  ibmc-file-gold-gid
-              requestIbmServices:
-                iam: true
-                monitoring: true
+                    class: ibmc-file-gold-gid
+                  replicas: 3
+              adminUI: {}
+              restProducer: {}
+              apicurioRegistry: {}
+              adminApi: {}
+              collector: {}
+              version: 11.0.2
