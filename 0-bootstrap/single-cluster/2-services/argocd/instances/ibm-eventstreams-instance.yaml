@@ -65,14 +65,14 @@ spec:
                   storage:
                     type: persistent-claim
                     size: 4Gi
-                    class: managed-nfs-storage
+                    class:  ibmc-file-gold-gid
                 zookeeper:
                   replicas: 3
                   metrics: {}
                   storage:
                     type: persistent-claim
                     size: 2Gi
-                    class: managed-nfs-storage
+                    class:  ibmc-file-gold-gid
               requestIbmServices:
                 iam: true
                 monitoring: true
