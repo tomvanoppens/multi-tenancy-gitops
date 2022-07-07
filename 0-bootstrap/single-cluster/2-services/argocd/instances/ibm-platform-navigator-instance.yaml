@@ -29,7 +29,7 @@ spec:
                 accept: true
                 license: L-RJON-CD3JKX
               storage:
-                class: ''
+                class: ibmc-file-gold-gid
               mqDashboard: true
               replicas: 1
               version: 2022.2.1
