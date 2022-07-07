@@ -28,7 +28,7 @@ spec:
             name: es-inst
             spec:
               license:
-                accept: false
+                accept: true
                 use: CloudPakForIntegrationProduction
               requestIbmServices:
                 iam: true
