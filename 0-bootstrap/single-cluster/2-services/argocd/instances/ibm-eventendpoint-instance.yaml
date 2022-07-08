@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ibm-eventstreams-instance
+  name: ibm-eventendpoint-instance
   annotations:
     argocd.argoproj.io/sync-wave: "281"
   finalizers:
@@ -20,7 +20,7 @@ spec:
     server: https://kubernetes.default.svc
   project: services
   source:
-    path: instances/ibm-eventstreams-instance
+    path: instances/ibm-eventendpoint-instance
     helm:
       values: |
         ibmeventendpointinstance:
