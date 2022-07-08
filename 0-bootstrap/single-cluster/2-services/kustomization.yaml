@@ -8,6 +8,7 @@ resources:
 #- argocd/operators/ibm-ace-operator.yaml
 #- argocd/operators/ibm-apic-operator.yaml
 - argocd/instances/ibm-apic-instance.yaml
+- argocd/instances/ibm-eventendpoint-instance.yaml
 #- argocd/instances/ibm-apic-management-portal-instance.yaml
 #- argocd/instances/ibm-apic-gateway-analytics-instance.yaml
 #- argocd/operators/ibm-aspera-operator.yaml
@@ -55,7 +56,7 @@ resources:
 - argocd/operators/ibm-automation-foundation-core-operator.yaml
 #- argocd/operators/ibm-automation-foundation-operator.yaml
 #- argocd/operators/ibm-license-service-operator.yaml
-#- argocd/instances/ibm-license-service-instance.yaml
+- argocd/instances/ibm-license-service-instance.yaml
 
 ## IBM Catalogs
 - argocd/operators/ibm-catalogs.yaml
