@@ -21,20 +21,5 @@ spec:
   project: services
   source:
     path: instances/ibm-cp4i-operations-dashboard-instance
-    helm:
-      values: |
-        ibmcp4ioperationsdashboard:
-          name: cp4i-od-dev
-          spec:
-            license:
-              accept: true
-              license: CP4I
-            storage:
-              configDbVolume:
-                class: ibmc-file-gold-gid
-              sharedVolume:
-                class: ibmc-file-gold-gid
-              tracingVolume:
-                class: ibmc-block-gold
-            version: 2022.2.1-lts
+
 
