@@ -16,8 +16,8 @@ resources:
 #- argocd/operators/ibm-platform-navigator.yaml
 
 - argocd/instances/ibm-platform-navigator-instance.yaml
-- argocd/instances/ibm-apic-instance.yaml
-- argocd/instances/ibm-eventendpoint-instance.yaml
+#- argocd/instances/ibm-apic-instance.yaml
+#- argocd/instances/ibm-eventendpoint-instance.yaml
 - argocd/instances/ibm-cp4i-operations-dashboard.yaml
 #has some issues with permissions
 #- argocd/instances/ibm-eventstreams-instance.yaml
